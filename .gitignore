@@ -1,0 +1,24 @@
+# Created by .ignore support plugin (hsz.mobi)
+#.gradle/
+#.idea/
+#*/build/
+#build/
+#gradle/
+#local.properties
+#*.iml
+#.gitignore
+#TuYa.iml
+#build.gradle
+#gradlew
+#gradlew.bat
+#import-summary.txt
+#settings.gradle
+/build
+.gradle/
+.idea/
+*/build/
+build/
+gradle/
+local.properties
+*.iml
+*.apk
