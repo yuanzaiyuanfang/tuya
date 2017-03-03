@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_main">
+
+
+    <com.sjj.tuya.widget.Board
+        android:id="@+id/iv_board"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <com.sjj.tuya.widget.PreView
+            android:id="@+id/table"
+
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            />
+
+        <com.sjj.tuya.widget.SelectPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.sjj.tuya.widget.SelectPager>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+
+        >
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:tabBackground="@drawable/tab_select_bg"
+            app:tabIndicatorColor="#33ffffff"
+            app:tabTextColor="@android:color/white"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabIndicatorHeight="50dp">
+
+        </android.support.design.widget.TabLayout>
+
+
+        <ImageView
+            android:src="@mipmap/hui"
+            android:id="@+id/bt_hui"
+            style="@style/bt_style"
+
+            />
+
+        <ImageView
+            android:src="@mipmap/redo"
+            android:layout_height="match_parent"
+            android:id="@+id/bt_redo"
+            style="@style/bt_style"
+            android:text="恢复"/>
+
+
+        <ImageView
+            android:src="@mipmap/clear"
+            android:layout_height="match_parent"
+            android:id="@+id/bt_clear"
+            style="@style/bt_style"
+            android:text="清除"/>
+
+
+    </LinearLayout>
+</LinearLayout>
