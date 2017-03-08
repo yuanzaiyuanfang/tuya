@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.sjj.tuya.bean.DrawBean;
 import com.sjj.tuya.utils.Constant;
 import com.sjj.tuya.utils.SizeUtils;
+import com.sjj.tuya.view.MainActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -223,7 +224,13 @@ public class Board extends ImageView {
                         mOnSaveListener.onSave(false, "异常,请检查存储设备",shouldShare);
                     }
                 }
-                mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                try {
+                    mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                } catch (NullPointerException e) {
+                    ((MainActivity) mContext).requestPermissions();
+                    return;
+                }
+
 
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);

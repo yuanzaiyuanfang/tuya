@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#00acff</color>
+    <color name="colorPrimaryDark">#00acff</color>
     <color name="colorAccent">#FF4081</color>
     <color name="bt_normal">@color/colorPrimary</color>
-    <color name="bt_press">@color/colorPrimaryDark</color>
+    <color name="bt_press">#303F9F</color>
+    <color name="gray">#aaa</color>
 </resources>

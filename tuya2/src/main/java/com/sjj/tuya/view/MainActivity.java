@@ -1,10 +1,15 @@
 package com.sjj.tuya.view;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -17,6 +22,7 @@ import android.widget.Toast;
 import com.sjj.tuya.R;
 import com.sjj.tuya.adapter.PaintAdapter;
 import com.sjj.tuya.bean.PaintBean;
+import com.sjj.tuya.utils.Constant;
 import com.sjj.tuya.utils.DensityUtil;
 import com.sjj.tuya.widget.Board;
 import com.sjj.tuya.widget.PreView;
@@ -51,8 +57,30 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
 
         initView();
+        requestPermissions();
+
     }
 
+    public void requestPermissions() {
+        //检查权限
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            System.out.println("申请授权");
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constant.PERMISSION_WRITE_EXTERNAL_STORAGE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constant.PERMISSION_WRITE_EXTERNAL_STORAGE:
+                if (permissions.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    showLongToast("画完后需要保存到本地,一定要授予读写存储的权限哦");
+                    return;
+                }
+                break;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
     private void initView() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
